@@ -8,15 +8,14 @@ public class TimesTables {
 
     private static int inputNumber(Scanner inputSource){
         int inputtedNumber;
-        inputSource.nextLine();
         try {
             inputtedNumber = inputSource.nextInt();
         }
         catch(InputMismatchException e){
             System.out.println("Please enter a whole number.");
             System.out.print("Number: ");
+            inputSource.nextLine();
             inputtedNumber = inputNumber(inputSource);
-            //TODO: work out why it doesn't output the first time.
         }
         return inputtedNumber;
     }
@@ -36,14 +35,12 @@ public class TimesTables {
             for(int i=1; i<=upperLimit; i++){
                 System.out.println(i+" x "+multipliedNumber+" = "+(i*multipliedNumber));
             }
-            System.out.println("Do you want to generate another table? (y/n)");
+            System.out.println("Do you want to generate another table? (Y/N)");
             input.nextLine();
             String inputtedString = input.next();
-            if(inputtedString!="y") {
-                shouldContinue = false;
-            }
-            //TODO: fix this.
+            shouldContinue = (inputtedString.toUpperCase()).equals("Y");
         }
+        System.out.println("Thank you for using Times Table Generator!");
     }
 
 }
