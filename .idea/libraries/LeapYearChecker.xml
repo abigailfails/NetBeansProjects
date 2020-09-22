@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LeapYearChecker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LeapYearChecker/dist/LeapYearChecker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

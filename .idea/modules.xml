@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Errors/Errors.iml" filepath="$PROJECT_DIR$/Errors/Errors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeapYearChecker/LeapYearChecker.iml" filepath="$PROJECT_DIR$/LeapYearChecker/LeapYearChecker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NetBeansProjects.iml" filepath="$PROJECT_DIR$/.idea/NetBeansProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NumberGuessingGame/NumberGuessingGame.iml" filepath="$PROJECT_DIR$/NumberGuessingGame/NumberGuessingGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RockPaperScissors/RockPaperScissors.iml" filepath="$PROJECT_DIR$/RockPaperScissors/RockPaperScissors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Strings/Strings.iml" filepath="$PROJECT_DIR$/Strings/Strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TimesTables/TimesTables.iml" filepath="$PROJECT_DIR$/TimesTables/TimesTables.iml" />
+    </modules>
+  </component>
+</project>
