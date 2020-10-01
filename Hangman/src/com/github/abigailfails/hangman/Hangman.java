@@ -3,76 +3,90 @@ package com.github.abigailfails.hangman;
 import java.util.Scanner;
 
 public class Hangman {
-    //TODO use filestream for storing words and/or find console clearing system
-    
+
     /**
-     * Returns version of the word without the non-guessed characters.
+     * Inputs a word, an 'in-progress' version of that word where some of the characters are underscores,
+     * and a 'guess' character,
+     * Returns the in-progress word, but if the full word contains the guess, underscores at that position in the
+     * in progress word are replaced with that character.
      */
     private static String updateWord(String fullWord, String inProgressWord, String guess) {
         String output = "";
-        boolean shouldPrintUnderscore = false;
-        for(int i=0; i<fullWord.length(); i++) {    
-            if(inProgressWord.charAt(i) == ('_')) {
-                if(guess != null) { //TODO REWRITE THIS LOGIC, also need to fix what happens when space in string
-                    if(fullWord.charAt(i) == guess.charAt(0)) {
+        for (int i = 0; i < fullWord.length(); i++) {
+            boolean shouldPrintUnderscore = false;
+            if (inProgressWord.charAt(i) == ('_')) {
+                if (guess != null) {
+                    if (fullWord.charAt(i) == guess.charAt(0)) {
                         output += guess;
-                    }
-                    else shouldPrintUnderscore = true;
+                    } else shouldPrintUnderscore = true;
+                } else shouldPrintUnderscore = true;
+                if (shouldPrintUnderscore) {
+                    output += "_";
                 }
+            } else {
                 output += inProgressWord.charAt(i);
             }
+        }
+        return output;
+    }
 
-            else shouldPrintUnderscore = true;   
-            if(shouldPrintUnderscore) {
-                output += "_";
-            }
-            //output += " "; TODO this doesn't work
+    /**
+     * Returns a string with spaces after each character.
+     * */
+    public static String addSpaces(String input) {
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            output += input.charAt(i) + " ";
         }
         return output;
     }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String actualWord; 
+        String actualWord;
         String guessInProgress = "";
-        String guess;
         String guessedLetters = "";
+        String guess;
         int guessesLeft = 5;
-        
+
         System.out.println("Please enter a word to be guessed.");
         System.out.print("Word: ");
-        actualWord = input.nextLine();
-        for(int i=0; i<actualWord.length(); i++) {
-            guessInProgress += "_";
+        actualWord = input.nextLine().toLowerCase();
+        for (int i = 0; i < actualWord.length(); i++) { //sets up the word with underscores instead of letters
+            guessInProgress += (actualWord.charAt(i) == ' ') ? " " : "_";
         }
         guessInProgress = updateWord(actualWord, guessInProgress, null);
-        for(int i=0; i<100; i++) System.out.println("\n");
-        while(guessesLeft>0){
-            System.out.println("Please enter a single letter that you think is in the word.");
-            System.out.println("You have "+guessesLeft+" wrong guesses left.");
-            if(!guessedLetters.isEmpty()) System.out.println("So far you've guessed '"+guessedLetters+"'");
-            System.out.println(guessInProgress);
+        for (int i = 0; i < 100; i++) System.out.println("\n");
+        System.out.println("Please enter a single letter that you think is in the word.");
+        while (guessesLeft > 0) {
+            System.out.print("You have " + guessesLeft + " wrong guesses left. ");
+            if (!guessedLetters.isEmpty()) System.out.println("So far you've guessed '" + guessedLetters + "'");
+            System.out.println(addSpaces(guessInProgress));
             System.out.print("Guess: ");
-            guess = input.nextLine();
+            guess = input.nextLine().toLowerCase();
             System.out.println();
+            if(guess.length()>1) {
+                guess = guess.substring(0,1);
+                System.out.print("You typed more than one character, so only '"+guess+"' was counted. ");
+            }
             guessInProgress = updateWord(actualWord, guessInProgress, guess);
-            if(actualWord.equals(guessInProgress)){
-                System.out.println("Well done, you've worked out that the word was " +actualWord+"!");
+            if (actualWord.equals(guessInProgress)) {
+                System.out.println("Well done, you've worked out that the word was " + actualWord + "!");
                 break;
             }
-            if(guessedLetters.contains(guess)&&!guessedLetters.isEmpty()) {
-                System.out.println("You've already guessed that??!!!?!?!\n");
+            if (guessedLetters.contains(guess) && !guessedLetters.isEmpty()) {
+                System.out.print("You've already guessed that??!!!?!?!\n");
                 guessesLeft--;
-            }
-            else if(!actualWord.contains(guess)) {
-                System.out.println("That's not right!\n");
+            } else if (!actualWord.contains(guess)) {
+                System.out.print("That's not right!\n");
                 guessesLeft--;
+            } else {
+                System.out.print("You guessed correctly!\n");
             }
             guessedLetters += guessedLetters.isEmpty() ? guess : "," + guess;
         }
-        if(guessesLeft==0){
-            System.out.println("Oh no, you didn't guess the word. It was "+actualWord+".");
+        if (guessesLeft == 0) {
+            System.out.println("Oh no, you didn't guess the word. It was " + actualWord + ".");
         }
-    } 
-    
+    }
 }
