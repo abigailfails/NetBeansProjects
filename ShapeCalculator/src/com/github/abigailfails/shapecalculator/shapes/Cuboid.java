@@ -1,15 +1,25 @@
 package com.github.abigailfails.shapecalculator.shapes;
 
+import com.github.abigailfails.shapecalculator.InputHelper;
+
+import java.util.Scanner;
+
 public class Cuboid implements IShape{
     private String name = "cuboid";
     private int length;
     private int width;
     private int height;
 
-    public Cuboid(int lengthIn, int widthIn, int heightIn) {
-        length = lengthIn;
-        width = widthIn;
-        height = heightIn;
+    public Cuboid(Scanner inputSource) {
+        System.out.println("Please enter the cuboid's length.");
+        System.out.print("Length: ");
+        length = InputHelper.inputInteger(inputSource);
+        System.out.println("Please enter the cuboid's width.");
+        System.out.print("Width: ");
+        width = InputHelper.inputInteger(inputSource);
+        System.out.println("Please enter the cuboid's height.");
+        System.out.print("Height: ");
+        height = InputHelper.inputInteger(inputSource);
     }
 
     public int getLength() {

@@ -1,13 +1,21 @@
 package com.github.abigailfails.shapecalculator.shapes;
 
+import com.github.abigailfails.shapecalculator.InputHelper;
+
+import java.util.Scanner;
+
 public class Rectangle implements IShape {
     private String name = "rectangle";
     private int length;
     private int width;
     
-    public Rectangle(int lengthIn, int widthIn) {
-        length = lengthIn;
-        width = widthIn;
+    public Rectangle(Scanner inputSource) {
+        System.out.println("Please enter the rectangle's length.");
+        System.out.print("Length: ");
+        length = InputHelper.inputInteger(inputSource);
+        System.out.println("Please enter the rectangle's width.");
+        System.out.print("Width: ");
+        width = InputHelper.inputInteger(inputSource);
     }
     
     public int getLength() {
