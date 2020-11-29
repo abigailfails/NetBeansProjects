@@ -24,6 +24,10 @@ public class Circle extends Shape {
         return Math.PI * this.radius * this.radius;
     }
 
+    public double Circumference() {
+        return Math.PI * this.radius * 2;
+    }
+
     public int Radius() {
         return this.radius;
     }

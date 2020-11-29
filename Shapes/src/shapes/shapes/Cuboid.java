@@ -18,6 +18,11 @@ public class Cuboid extends Rectangle {
     }
 
     @Override
+    public double Area() {
+        return 2*((length*width) + (length*height) + (width*height));
+    }
+
+    @Override
     public int Sides()
     {
         return 16;

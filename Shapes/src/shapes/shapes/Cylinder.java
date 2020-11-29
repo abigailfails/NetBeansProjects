@@ -17,6 +17,11 @@ public class Cylinder extends Circle {
         return "cylinder";
     }
 
+    @Override
+    public double Area() {
+        return 2*Math.PI*radius*(height+radius);
+    }
+
     public double Volume() {
         return this.Area() * height;
     }

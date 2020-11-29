@@ -8,17 +8,15 @@ import java.util.InputMismatchException;
 public class LeapYearChecker {
 
     private static boolean isLeapYear(int year) {
-        boolean flag;
+        boolean flag = false;
         if(year%4==0){
             if(year%100==0){
-                if(year%400=0){
-                    flag = 1;
+                if(year%400==0){
+                    flag = true;
                 }
-                flag = 0;
             }
-            flag = 1;
+            flag = true;
         }
-        flag = 0;
         return flag;
     }
 

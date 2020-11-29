@@ -28,7 +28,7 @@ public class Rectangle extends Polygon {
     }
 
     @Override
-    public String Name() {
+    public  String Name() {
         return "rectangle";
     }
 

@@ -61,7 +61,7 @@ public class StarSign {
         setPosition();
     }
 
-    private void setPosition () {
+    private void setPosition() {
         MonthDay birthdayMonth = MonthDay.from(birthday);
         birthdayMonth.adjustInto(birthday);
         for (int i=0; i<12; i++) {

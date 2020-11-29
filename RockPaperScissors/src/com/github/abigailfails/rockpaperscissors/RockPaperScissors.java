@@ -2,14 +2,15 @@ package com.github.abigailfails.rockpaperscissors;
 
 public class RockPaperScissors {
 
-    private static boolean didUserWin(String userInput, String computerInput){
+    //TODO this didn't seem to be finished and is throwing errors. May fix one day for fun.
+    /*private static boolean didUserWin(String userInput, String computerInput){
         if(input == "ROCK"){
             if
         }
         return false;
     }
 
-    public static void takeUserInput(){
+    public static void takeUserInput() {
         int inputtedYear;
         boolean isLeap;
         System.out.print("Year: ");
@@ -32,6 +33,6 @@ public class RockPaperScissors {
     public static void main(String[] args) {
         System.out.println("Let's play rock, paper, scissors! Type either \"rock\",\"paper\" or \"scissors\"!");
         takeUserInput();
-    }
+    }*/
 
 }
