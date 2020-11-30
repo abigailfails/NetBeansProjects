@@ -5,19 +5,10 @@
  */
 package shapes.template;
 
-import shapes.template.Shape;
-
 /**
  *
  * @author dw
  */
-public abstract class Polygon extends Shape {
-    public Polygon() {
-        System.out.println("Polygon: " + this.toString());        
-    }
-    
-    @Override
-    public abstract double Area();
-                
-    public abstract int Sides();
+public interface Polygon extends I2DShape {
+    int Sides();
 }

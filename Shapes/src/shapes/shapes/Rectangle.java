@@ -5,13 +5,14 @@
  */
 package shapes.shapes;
 
+import shapes.template.I2DShape;
 import shapes.template.Polygon;
 
 /**
  *
  * @author dw
  */
-public class Rectangle extends Polygon {
+public class Rectangle implements Polygon {
     protected int length = 0;
     protected int width = 0;
             
@@ -53,4 +54,5 @@ public class Rectangle extends Polygon {
     {
         return width;        
     }
+
 }

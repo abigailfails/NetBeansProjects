@@ -1,6 +1,8 @@
 package shapes.shapes;
 
-public class Cylinder extends Circle {
+import shapes.template.I3DShape;
+
+public class Cylinder extends Circle implements I3DShape {
     protected int height;
 
     public Cylinder() {

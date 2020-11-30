@@ -1,9 +1,10 @@
 package shapes.shapes;
 
-import shapes.template.Shape;
+import shapes.template.I2DShape;
 
-public class Circle extends Shape {
+public class Circle implements I2DShape {
     protected int radius;
+    private String id;
 
     public Circle() {
         System.out.println("Circle: " + this.toString());
@@ -23,6 +24,7 @@ public class Circle extends Shape {
     public double Area() {
         return Math.PI * this.radius * this.radius;
     }
+
 
     public double Circumference() {
         return Math.PI * this.radius * 2;

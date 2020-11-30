@@ -1,6 +1,9 @@
 package shapes.shapes;
 
-public class Cuboid extends Rectangle {
+import shapes.template.I2DShape;
+import shapes.template.I3DShape;
+
+public class Cuboid extends Rectangle implements I3DShape {
     protected int height;
 
     public Cuboid() {
