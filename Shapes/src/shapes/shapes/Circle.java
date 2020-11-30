@@ -4,7 +4,6 @@ import shapes.template.I2DShape;
 
 public class Circle implements I2DShape {
     protected int radius;
-    private String id;
 
     public Circle() {
         System.out.println("Circle: " + this.toString());

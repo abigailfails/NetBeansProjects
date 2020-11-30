@@ -5,14 +5,13 @@
  */
 package shapes.shapes;
 
-import shapes.template.I2DShape;
-import shapes.template.Polygon;
+import shapes.template.IPolygon;
 
 /**
  *
  * @author dw
  */
-public class Rectangle implements Polygon {
+public class Rectangle implements IPolygon {
     protected int length = 0;
     protected int width = 0;
             

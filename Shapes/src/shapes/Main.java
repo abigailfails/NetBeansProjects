@@ -40,7 +40,6 @@ public class Main {
     public static void main(String[] args) {
         var inputSource = new Scanner(System.in);
         var shouldContinue = false;
-        I2DShape largestArea = null;
         List<I2DShape> shapes = new ArrayList<>();
         do {
             I2DShape shape;
@@ -86,12 +85,12 @@ public class Main {
             System.out.println("\n"+information);
             if (shape instanceof I3DShape) System.out.println("As it is a 3D shape, its volume is "+((I3DShape) shape).Volume()+".\n");
             shapes.add(shape);
-            largestArea = (largestArea == null) ? shape : ((shape.Area() >= largestArea.Area()) ? shape : largestArea);
             shouldContinue = InputHelper.inputBoolean(continueMessage, continueRetry, inputSource);
         }
         while(shouldContinue);
         //TODO change to Collectors.joining
-        System.out.println(shapes.stream().sorted(Comparable::compareTo).map(I2DShape::Name).reduce("Shapes (ordered by area): ", (s, s1) -> s + "," + s1));
-        System.out.println("Out of all the shapes you've entered, the one with the largest area is a "+largestArea.Name()+", with an area of "+largestArea.Area()+".\n");
+        shapes = shapes.stream().sorted().collect(Collectors.toList());
+        System.out.println("The shapes you entered, ordered by area: "+shapes.stream().sorted(Comparable::compareTo).map(s -> s.Name()+" ("+s.Area()+")").collect(Collectors.joining(", "))+".");
+        System.out.println("The largest was the "+shapes.get(shapes.size()-1).Name()+" with an area of "+shapes.get(0).Area()+".");
     }
 }

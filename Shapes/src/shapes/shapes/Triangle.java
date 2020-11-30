@@ -5,14 +5,13 @@
  */
 package shapes.shapes;
 
-import shapes.template.I2DShape;
-import shapes.template.Polygon;
+import shapes.template.IPolygon;
 
 /**
  *
  * @author dw
  */
-public class Triangle implements Polygon {
+public class Triangle implements IPolygon {
     private int base;
     private int height;
               
