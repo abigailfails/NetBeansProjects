@@ -91,6 +91,6 @@ public class Main {
         //TODO change to Collectors.joining
         shapes = shapes.stream().sorted().collect(Collectors.toList());
         System.out.println("The shapes you entered, ordered by area: "+shapes.stream().sorted(Comparable::compareTo).map(s -> s.Name()+" ("+s.Area()+")").collect(Collectors.joining(", "))+".");
-        System.out.println("The largest was the "+shapes.get(shapes.size()-1).Name()+" with an area of "+shapes.get(0).Area()+".");
+        System.out.println("The largest was the "+shapes.get(shapes.size()-1).Name()+" with an area of "+shapes.get(0).Area()+".\n");
     }
 }
