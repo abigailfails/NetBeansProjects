@@ -1,12 +1,14 @@
 package shapes;
 
-import shapes.shapes.Circle;
-import shapes.shapes.Cuboid;
-import shapes.shapes.Cylinder;
+import shapes.shapes.*;
 import shapes.shapes.Rectangle;
-import shapes.template.Shape;
+import shapes.template.I2DShape;
+import shapes.template.I3DShape;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static final String choiceMessage = """
@@ -15,9 +17,10 @@ public class Main {
                  2. Circle
                  3. Cuboid
                  4. Cylinder
+                 5. Triangle
                  Choice:"""+" ";
     public static final String choiceRetry = """
-            Please choose a number from 1-4.
+            Please choose a number from 1-5.
             Choice:"""+" ";
     public static final String continueMessage = "Do you want to enter another shape? (Y/N)\nChoice: ";
     public static final String continueRetry = "Please type Y for yes or N for no. Do you want to enter another shape?\nChoice: ";
@@ -37,11 +40,12 @@ public class Main {
     public static void main(String[] args) {
         var inputSource = new Scanner(System.in);
         var shouldContinue = false;
-        Shape largestArea = null;
+        I2DShape largestArea = null;
+        List<I2DShape> shapes = new ArrayList<>();
         do {
-            Shape shape;
+            I2DShape shape;
             String information;
-            switch (InputHelper.inputBoundedInteger(choiceMessage, choiceRetry, inputSource, 1, 4)) {
+            switch (InputHelper.inputBoundedInteger(choiceMessage, choiceRetry, inputSource, 1, 5)) {
                 case 1 -> {
                     int length = inputShapeValue("rectangle", "length", inputSource);
                     int width = inputShapeValue("rectangle", "width", inputSource);
@@ -70,13 +74,24 @@ public class Main {
                     Cylinder cylinder = (Cylinder) shape;
                     information = "Your cylinder has a radius of "+cylinder.Radius()+", a circumference of "+cylinder.Circumference()+", a surface area of "+cylinder.Area()+" and a volume of "+cylinder.Volume()+".";
                 }
+                case 5 -> {
+                    int base = inputShapeValue("triangle", "base", inputSource);
+                    int height = inputShapeValue("triangle", "height", inputSource);
+                    shape = new Triangle(base, height);
+                    Triangle triangle = (Triangle) shape;
+                    information = "Your triangle is "+triangle.Base()+" long, "+triangle.Height()+" tall and has an area of "+triangle.Area()+".";
+                }
                 default -> throw new IllegalStateException("Shape choice out of bounds. This should not be happening!");
             }
-            System.out.println("\n"+information+"\n");
+            System.out.println("\n"+information);
+            if (shape instanceof I3DShape) System.out.println("As it is a 3D shape, its volume is "+((I3DShape) shape).Volume()+".\n");
+            shapes.add(shape);
             largestArea = (largestArea == null) ? shape : ((shape.Area() >= largestArea.Area()) ? shape : largestArea);
             shouldContinue = InputHelper.inputBoolean(continueMessage, continueRetry, inputSource);
         }
         while(shouldContinue);
-        System.out.println("Out of all the shapes you've entered, the one with the largest area is a "+largestArea.Name()+", with an area of "+largestArea.Area()+".");
+        //TODO change to Collectors.joining
+        System.out.println(shapes.stream().sorted(Comparable::compareTo).map(I2DShape::Name).reduce("Shapes (ordered by area): ", (s, s1) -> s + "," + s1));
+        System.out.println("Out of all the shapes you've entered, the one with the largest area is a "+largestArea.Name()+", with an area of "+largestArea.Area()+".\n");
     }
 }
