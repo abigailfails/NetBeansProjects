@@ -14,10 +14,11 @@ public class Main {
     public static final String choiceMessage = """
                  Select your shape.
                  1. Rectangle
-                 2. Circle
-                 3. Cuboid
-                 4. Cylinder
-                 5. Triangle
+                 2. Parallelogram
+                 3. Circle
+                 4. Cuboid
+                 5. Cylinder
+                 6. Triangle
                  Choice:"""+" ";
     public static final String choiceRetry = """
             Please choose a number from 1-5.
@@ -44,36 +45,43 @@ public class Main {
         do {
             I2DShape shape;
             String information;
-            switch (InputHelper.inputBoundedInteger(choiceMessage, choiceRetry, inputSource, 1, 5)) {
+            switch (InputHelper.inputBoundedInteger(choiceMessage, choiceRetry, inputSource, 1, 6)) {
                 case 1 -> {
-                    int length = inputShapeValue("rectangle", "length", inputSource);
                     int width = inputShapeValue("rectangle", "width", inputSource);
-                    shape = new Rectangle(length, width);
+                    int length = inputShapeValue("rectangle", "length", inputSource);
+                    shape = new Rectangle(width, length);
                     Rectangle rect = (Rectangle) shape;
-                    information = "Your rectangle is "+rect.Length()+" long and "+rect.Width()+" wide, with an area of "+rect.Area()+" and "+rect.Sides()+" sides.";
+                    information = "Your rectangle is "+rect.Width()+" wide and "+rect.Length()+" long, with an area of "+rect.Area()+" and "+rect.Sides()+" sides.";
                 }
                 case 2 -> {
+                    int base = inputShapeValue("parallelogram", "base", inputSource);
+                    int length = inputShapeValue("parallelogram", "height", inputSource);
+                    shape = new Parallelogram(base, length);
+                    Parallelogram para = (Parallelogram) shape;
+                    information = "Your parallelogram has a base of "+para.Base()+" and a height of "+para.Length()+", with an area of "+para.Area()+" and "+para.Sides()+" sides.";
+                }
+                case 3 -> {
                     int radius = inputShapeValue("circle", "radius", inputSource);
                     shape = new Circle(radius);
                     Circle circle = (Circle) shape;
                     information = "Your circle has a radius of "+circle.Radius()+", a circumference of "+circle.Circumference()+", and an area of "+circle.Area()+".";
                 }
-                case 3 -> {
-                    int length = inputShapeValue("cuboid", "length", inputSource);
-                    int width = inputShapeValue("cuboid", "width", inputSource);
-                    int height = inputShapeValue("cuboid", "height", inputSource);
-                    shape = new Cuboid(length, width, height);
-                    Cuboid cube = (Cuboid) shape;
-                    information = "Your cuboid is "+cube.Length()+" long, "+cube.Width()+" wide, and "+cube.Height()+" high, with a surface area of "+cube.Area()+", a volume of "+cube.Volume()+" and "+cube.Sides()+" sides.";
-                }
                 case 4 -> {
+                    int width = inputShapeValue("cuboid", "width", inputSource);
+                    int length = inputShapeValue("cuboid", "length", inputSource);
+                    int height = inputShapeValue("cuboid", "height", inputSource);
+                    shape = new Cuboid(width, length, height);
+                    Cuboid cube = (Cuboid) shape;
+                    information = "Your cuboid is "+cube.Width()+" wide, "+cube.Length()+" long, and "+cube.Height()+" high, with a surface area of "+cube.Area()+" and "+cube.Sides()+" sides.";
+                }
+                case 5 -> {
                     int radius = inputShapeValue("cylinder", "radius", inputSource);
                     int height = inputShapeValue("cylinder", "height", inputSource);
                     shape = new Cylinder(radius, height);
                     Cylinder cylinder = (Cylinder) shape;
-                    information = "Your cylinder has a radius of "+cylinder.Radius()+", a circumference of "+cylinder.Circumference()+", a surface area of "+cylinder.Area()+" and a volume of "+cylinder.Volume()+".";
+                    information = "Your cylinder has a radius of "+cylinder.Radius()+", a circumference of "+cylinder.Circumference()+", and a surface area of "+cylinder.Area()+".";
                 }
-                case 5 -> {
+                case 6 -> {
                     int base = inputShapeValue("triangle", "base", inputSource);
                     int height = inputShapeValue("triangle", "height", inputSource);
                     shape = new Triangle(base, height);
@@ -82,15 +90,13 @@ public class Main {
                 }
                 default -> throw new IllegalStateException("Shape choice out of bounds. This should not be happening!");
             }
-            System.out.println("\n"+information);
-            if (shape instanceof I3DShape) System.out.println("As it is a 3D shape, its volume is "+((I3DShape) shape).Volume()+".\n");
+            System.out.println("\n"+information+(shape instanceof I3DShape ? " It is a 3D shape with a volume of "+((I3DShape) shape).Volume()+".\n":"\n"));
             shapes.add(shape);
             shouldContinue = InputHelper.inputBoolean(continueMessage, continueRetry, inputSource);
         }
         while(shouldContinue);
-        //TODO change to Collectors.joining
         shapes = shapes.stream().sorted().collect(Collectors.toList());
         System.out.println("The shapes you entered, ordered by area: "+shapes.stream().sorted(Comparable::compareTo).map(s -> s.Name()+" ("+s.Area()+")").collect(Collectors.joining(", "))+".");
-        System.out.println("The largest was the "+shapes.get(shapes.size()-1).Name()+" with an area of "+shapes.get(0).Area()+".\n");
+        System.out.println("The largest was the "+shapes.get(shapes.size()-1).Name()+" with an area of "+shapes.get(shapes.size()-1).Area()+".\n");
     }
 }

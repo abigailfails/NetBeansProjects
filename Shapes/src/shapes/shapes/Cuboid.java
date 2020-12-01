@@ -10,9 +10,9 @@ public class Cuboid extends Rectangle implements I3DShape {
         System.out.println("Cuboid: " + this.toString());
     }
 
-    public Cuboid (int length, int width, int height) {
-       super(length, width);
-        this.height = height;
+    public Cuboid (int width, int length, int height) {
+       super(width, length);
+       this.height = height;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Cuboid extends Rectangle implements I3DShape {
 
     @Override
     public double Area() {
-        return 2*((length*width) + (length*height) + (width*height));
+        return 2*((length*base) + (length*height) + (base*height));
     }
 
     @Override
@@ -31,11 +31,16 @@ public class Cuboid extends Rectangle implements I3DShape {
         return 16;
     }
 
+    @Override
+    public int Length() {
+        return this.length;
+    }
+
     public int Height() {
         return this.height;
     }
 
     public double Volume() {
-        return this.length * this.width * this.height;
+        return this.length * this.base * this.height;
     }
 }

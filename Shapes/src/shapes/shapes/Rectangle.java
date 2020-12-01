@@ -5,26 +5,21 @@
  */
 package shapes.shapes;
 
-import shapes.template.IPolygon;
-
 /**
  *
  * @author dw
  */
-public class Rectangle implements IPolygon {
-    protected int length = 0;
-    protected int width = 0;
+public class Rectangle extends Parallelogram {
             
-    public Rectangle()
-    {   
+    public Rectangle() {
         System.out.println("Rectangle: " + this.toString());          
     }
     
-    public Rectangle(int length, int width)
+    public Rectangle(int width, int length)
     {   
         this();
+        this.base = width;
         this.length = length;
-        this.width = width;
     }
 
     @Override
@@ -41,17 +36,16 @@ public class Rectangle implements IPolygon {
     @Override
     public double Area()
     {
-        return length * width;        
+        return length * base;
+    }
+
+    @Override
+    public int Length() {
+        return length;
     }
     
-    public int Length()
-    {
-        return length;        
-    }
-    
-    public int Width()
-    {
-        return width;        
+    public int Width() {
+        return base;
     }
 
 }
