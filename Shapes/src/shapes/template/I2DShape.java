@@ -8,4 +8,5 @@ public interface I2DShape extends Comparable<I2DShape> {
     default int compareTo(I2DShape s) {
         return Double.compare(this.Area(), s.Area());
     }
+
 }
