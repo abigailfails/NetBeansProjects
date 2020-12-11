@@ -12,7 +12,7 @@ class LinearQueueTest {
     @Test
     void mainTest() {
         LinearQueue<Integer> queue = new LinearQueue<>(new Integer[4]);
-        Integer[] expectedValues = {2,3,4,5};
+        Integer[] expectedValues = {1,2,3,4};
         queue.enQueue(1);
         queue.enQueue(2);
         queue.enQueue(3);

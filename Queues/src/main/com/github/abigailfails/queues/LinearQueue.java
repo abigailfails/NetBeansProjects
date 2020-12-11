@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class LinearQueue<T> {
     protected final T[] queue;
-    protected int size, front, rear;
+    protected int size = 0;
+    protected int front;
+    protected int rear;
 
     /**
      * @param queue must be empty
@@ -24,7 +26,12 @@ public class LinearQueue<T> {
 
     public T deQueue() {
         front++;
+        size--;
         return queue[front-1];
+    }
+
+    public T peek() {
+        return queue[front];
     }
 
     public boolean isFull() {

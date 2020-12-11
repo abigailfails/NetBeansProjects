@@ -10,15 +10,31 @@ public class CircularQueue<T> extends LinearQueue<T> {
 
     @Override
     public void enQueue(T item) {
-        rear++;
-        size++;
-        if(rear>=queue.length) rear = 0;
-        //TODO then check for it 'overlapping' somehow, this needs to be prevented
-        queue[rear] = item;
+        if(!isFull()) {
+            size++;
+            rear = (rear+1) % queue.length;
+            queue[rear] = item;
+        }
     }
 
     @Override
     public T deQueue() {
-        return super.deQueue();
+        if(!isEmpty()) {
+            int oldFront = front;
+            front = (front+1) % queue.length;
+            size--;
+            return queue[oldFront];
+        }
+        return null;
+    }
+
+    @Override
+    public boolean isFull() {
+        return size == queue.length;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
 }
