@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class LinearQueue<T> {
     protected final T[] queue;
-    protected int size = 0;
     protected int front;
     protected int rear;
 
@@ -18,20 +17,22 @@ public class LinearQueue<T> {
         this.rear = -1;
     }
 
-    public void enQueue(T item) {
+    public void add(T item) {
         rear++;
-        size++;
         queue[rear] = item;
     }
 
-    public T deQueue() {
+    public T remove() {
         front++;
-        size--;
         return queue[front-1];
     }
 
     public T peek() {
         return queue[front];
+    }
+
+    public T[] get() {
+        return queue.clone();
     }
 
     public boolean isFull() {
@@ -40,5 +41,23 @@ public class LinearQueue<T> {
 
     public boolean isEmpty() {
         return rear+1 == front;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        for (int i = 0; i < queue.length-1; i++) {
+            string.append(queue[i]).append(", ");
+        }
+        string.append(queue[queue.length-1]);
+        return string.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof LinearQueue) {
+            return Arrays.equals(((LinearQueue<?>) obj).get(), this.get());
+        }
+        return false;
     }
 }

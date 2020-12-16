@@ -1,6 +1,8 @@
 package main.com.github.abigailfails.queues;
 
 public class CircularQueue<T> extends LinearQueue<T> {
+    protected int size = 0;
+
     /**
      * @param queue must be empty
      */
@@ -9,7 +11,7 @@ public class CircularQueue<T> extends LinearQueue<T> {
     }
 
     @Override
-    public void enQueue(T item) {
+    public void add(T item) {
         if(!isFull()) {
             size++;
             rear = (rear+1) % queue.length;
@@ -18,7 +20,7 @@ public class CircularQueue<T> extends LinearQueue<T> {
     }
 
     @Override
-    public T deQueue() {
+    public T remove() {
         if(!isEmpty()) {
             int oldFront = front;
             front = (front+1) % queue.length;
@@ -28,6 +30,7 @@ public class CircularQueue<T> extends LinearQueue<T> {
         return null;
     }
 
+    //TODO pointer solution
     @Override
     public boolean isFull() {
         return size == queue.length;
