@@ -1,5 +1,6 @@
 package shapes.shapes;
 
+import shapes.Main;
 import shapes.template.I2DShape;
 import shapes.template.I3DShape;
 
@@ -8,16 +9,12 @@ public class Cuboid extends Rectangle implements I3DShape {
 
     public Cuboid() {
         System.out.println("Cuboid: " + this.toString());
+        Main.shapeNames.put("Cuboid", this.getClass());
     }
 
     public Cuboid (int width, int length, int height) {
        super(width, length);
        this.height = height;
-    }
-
-    @Override
-    public String Name() {
-        return "cuboid";
     }
 
     @Override

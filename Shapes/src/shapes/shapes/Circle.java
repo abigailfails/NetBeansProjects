@@ -1,5 +1,6 @@
 package shapes.shapes;
 
+import shapes.Main;
 import shapes.template.I2DShape;
 
 public class Circle implements I2DShape {
@@ -7,11 +8,7 @@ public class Circle implements I2DShape {
 
     public Circle() {
         System.out.println("Circle: " + this.toString());
-    }
-
-    @Override
-    public String Name() {
-        return "circle";
+        Main.shapeNames.put("Circle", this.getClass());
     }
 
     public Circle(int radius) {

@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//TODO design implementation that doesn't use try catches
 public class InputHelper {
     private static final ArrayList<String> ALLOWED_TRUES = new ArrayList<>(Arrays.asList("y", "yes", "true"));
     private static final ArrayList<String> ALLOWED_FALSES = new ArrayList<>(Arrays.asList("n", "no", "false"));

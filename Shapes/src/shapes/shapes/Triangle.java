@@ -5,6 +5,7 @@
  */
 package shapes.shapes;
 
+import shapes.Main;
 import shapes.template.IPolygon;
 
 /**
@@ -14,16 +15,16 @@ import shapes.template.IPolygon;
 public class Triangle implements IPolygon {
     private int base;
     private int height;
-              
+
+    public Triangle() {
+        System.out.println("Triangle: " + this.toString());
+        Main.shapeNames.put("Triangle", this.getClass());
+    }
+
     public Triangle(int base, int height)
     {   
         this.base = base;
         this.height = height;
-    }
-
-    @Override
-    public String Name() {
-        return "triangle";
     }
 
     public double Area()

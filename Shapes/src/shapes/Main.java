@@ -6,11 +6,13 @@ import shapes.template.I2DShape;
 import shapes.template.I3DShape;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
+    public static HashMap<String, Class<? extends I2DShape>> shapeNames;
     public static final String choiceMessage = """
                  Select your shape.
                  1. Rectangle

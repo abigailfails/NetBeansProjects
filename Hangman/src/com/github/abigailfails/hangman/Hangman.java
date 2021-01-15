@@ -11,34 +11,34 @@ public class Hangman {
      * in progress word are replaced with that character.
      */
     private static String updateWord(String fullWord, String inProgressWord, String guess) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < fullWord.length(); i++) {
             boolean shouldPrintUnderscore = false;
             if (inProgressWord.charAt(i) == ('_')) {
                 if (guess != null) {
                     if (fullWord.charAt(i) == guess.charAt(0)) {
-                        output += guess;
+                        output.append(guess);
                     } else shouldPrintUnderscore = true;
                 } else shouldPrintUnderscore = true;
                 if (shouldPrintUnderscore) {
-                    output += "_";
+                    output.append("_");
                 }
             } else {
-                output += inProgressWord.charAt(i);
+                output.append(inProgressWord.charAt(i));
             }
         }
-        return output;
+        return output.toString();
     }
 
     /**
      * Returns a string with spaces after each character.
      * */
     public static String addSpaces(String input) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
-            output += input.charAt(i) + " ";
+            output.append(input.charAt(i)).append(" ");
         }
-        return output;
+        return output.toString();
     }
 
     public static void main(String[] args) {

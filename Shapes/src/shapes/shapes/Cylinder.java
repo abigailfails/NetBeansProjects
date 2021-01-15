@@ -1,5 +1,6 @@
 package shapes.shapes;
 
+import shapes.Main;
 import shapes.template.I3DShape;
 
 public class Cylinder extends Circle implements I3DShape {
@@ -7,16 +8,12 @@ public class Cylinder extends Circle implements I3DShape {
 
     public Cylinder() {
         System.out.println("Cylinder: " + this.toString());
+        Main.shapeNames.put("Cylinder", this.getClass());
     }
 
     public Cylinder(int radius, int height) {
         super(radius);
         this.height = height;
-    }
-
-    @Override
-    public String Name() {
-        return "cylinder";
     }
 
     @Override

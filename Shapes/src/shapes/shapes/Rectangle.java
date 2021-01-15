@@ -5,6 +5,8 @@
  */
 package shapes.shapes;
 
+import shapes.Main;
+
 /**
  *
  * @author dw
@@ -12,7 +14,8 @@ package shapes.shapes;
 public class Rectangle extends Parallelogram {
             
     public Rectangle() {
-        System.out.println("Rectangle: " + this.toString());          
+        System.out.println("Rectangle: " + this.toString());
+        Main.shapeNames.put("Rectangle", this.getClass());
     }
     
     public Rectangle(int width, int length)
@@ -20,11 +23,6 @@ public class Rectangle extends Parallelogram {
         this();
         this.base = width;
         this.length = length;
-    }
-
-    @Override
-    public  String Name() {
-        return "rectangle";
     }
 
     @Override

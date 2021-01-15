@@ -1,12 +1,14 @@
 package shapes.shapes;
 
+import shapes.Main;
 import shapes.template.IPolygon;
 
 public class Parallelogram implements IPolygon {
     protected int base;
     protected int length;
     public Parallelogram() {
-        System.out.println("Rectangle: " + this.toString());
+        System.out.println("Parallelogram: " + this.toString());
+        Main.shapeNames.put("Parallelogram", this.getClass());
     }
 
     public Parallelogram(int base, int length) {
@@ -22,11 +24,6 @@ public class Parallelogram implements IPolygon {
     @Override
     public double Area() {
         return this.base*this.length;
-    }
-
-    @Override
-    public String Name() {
-        return "parallelogram";
     }
 
     public int Base() {
