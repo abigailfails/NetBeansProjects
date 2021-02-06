@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<Integer> list = new LinkedList<Integer>();
         System.out.println("Initialising linked list...");
         System.out.println("List: " + Arrays.toString(list.asArray()));
         list.append(3);

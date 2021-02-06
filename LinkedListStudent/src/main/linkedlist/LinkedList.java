@@ -179,6 +179,23 @@ public class LinkedList<T> {
     }
 
     /**
+     * Returns the number of times {@code value} appears in the list.
+     *
+     * @param value the value to look for in the list
+     *
+     * @return the number of elements matching {@code value} in the list, or 0 if there are none
+     * */
+    public int count(T value) {
+        Element<T> e = front;
+        int count = 0;
+        while(e != null) {
+            if (e.equals(value)) count++;
+            e = e.getNext();
+        }
+        return count;
+    }
+
+    /**
      * Returns the number of elements in the list.
      *
      * @return the number of elements in the list
