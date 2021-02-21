@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="TimesTables">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/TimesTables/dist/TimesTables.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

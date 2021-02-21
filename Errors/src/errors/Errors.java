@@ -4,10 +4,8 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Errors
-{
-    public static void main(String[] args)
-    {
+public class Errors {
+    public static void main(String[] args) {
                
         String firstName = null;
         String lastName = null;
@@ -19,31 +17,22 @@ public class Errors
         System.out.println(c);            
                       
         
-        try
-        {
+        try {
             firstName = x.readLine();
         } 
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             Logger.getLogger(Errors.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         System.out.println("What is your last name?");
-        try
-        {
+        try {
             lastName = x.readLine();
-            System.out.println(7 / 0);
-        } 
-        catch (IOException e)
-        {
-            System.out.println("Error: " + e);
-        } 
-        catch (Exception e)
-        {
+        }
+        catch (Exception e) {
             System.out.println("Error: " + e);
         }
-        
-        System.out.println("");
-        System.out.println("Your name is: " + firstName + " " + lastName);
+
+        System.out.println();
+        System.out.println("Your name is '" + firstName + " " + lastName + "'.");
     }
 }
