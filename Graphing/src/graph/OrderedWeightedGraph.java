@@ -13,17 +13,6 @@ import java.util.TreeMap;
 public class OrderedWeightedGraph<V extends Comparable<V>> {
     private final SimpleHashMap<V, SimpleHashMap<V, Integer>> nodes = new SimpleHashMap<>();
 
-    public static void main(String[] args) {
-        OrderedWeightedGraph<Character> graph = new OrderedWeightedGraph<>();
-        graph.addNode('Z');
-        graph.addNode('A');
-        graph.addNode('C');
-        graph.addConnection('A', 'Z', 5, true);
-        graph.addConnection('A', 'C', 10, true);
-        graph.addConnection('C', 'Z', 2, false);
-        System.out.println(graph.toString());
-    }
-
     public final void addNode(V node) {
         this.nodes.put(node, new SimpleHashMap<>());
     }
@@ -36,15 +25,23 @@ public class OrderedWeightedGraph<V extends Comparable<V>> {
         }
     }
 
-    public void addConnection(V startNode, V endNode, int weight, boolean isBidirectional) {
-        this.nodes.get(startNode).put(endNode, weight);
-        if (!this.nodes.containsKey(endNode)) this.nodes.put(endNode, new SimpleHashMap<>());
-        if (isBidirectional) this.nodes.get(endNode).put(startNode, weight);
+    public void addEdgeUndirected(V startNode, V endNode, int weight) {
+        this.addEdgeDirected(startNode, endNode, weight);
+        this.addEdgeDirected(endNode, startNode, weight);
     }
 
-    public void removeConnection(V startNode, V nodeToDisconnect) {
+    public void addEdgeDirected(V startNode, V endNode, int weight) {
+        this.nodes.get(startNode).put(endNode, weight);
+        if (!this.nodes.containsKey(endNode)) this.nodes.put(endNode, new SimpleHashMap<>());
+    }
+
+    public void removeEdgeUndirected(V startNode, V nodeToDisconnect) {
+        this.removeEdgeDirected(startNode, nodeToDisconnect);
+        this.removeEdgeDirected(nodeToDisconnect, startNode);
+    }
+
+    public void removeEdgeDirected(V startNode, V nodeToDisconnect) {
         this.nodes.get(startNode).remove(nodeToDisconnect);
-        this.nodes.get(nodeToDisconnect).remove(startNode);
     }
 
     public SortedMap<V, Integer> childMap(V node) {
