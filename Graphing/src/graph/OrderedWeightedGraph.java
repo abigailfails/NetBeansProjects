@@ -57,6 +57,7 @@ public class OrderedWeightedGraph<V extends Comparable<V>> {
         return this.nodes.containsKey(node);
     }
 
+    //TODO move half of this to the hashmap and make this graph unordered
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

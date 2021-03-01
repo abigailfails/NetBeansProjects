@@ -58,7 +58,7 @@ public class LinkedList<T> {
                 current = current.getNext();
             }
             
-            tail = new Element<T>(value, current, null);// Create new tail Element pointing back to the previous Tail
+            tail = new Element<>(value, current, null);// Create new tail Element pointing back to the previous Tail
             current.setNext(tail);//Update the end of the LinkedList to point to this new Element
         }
         else {
@@ -133,7 +133,7 @@ public class LinkedList<T> {
 
     private void addElement(T value, Element<T> elementToShift) {
         Element<T> previous = elementToShift.getPrevious();
-        Element<T> newElement = new Element<T>(value, previous, elementToShift);
+        Element<T> newElement = new Element<>(value, previous, elementToShift);
         if (previous != null) {
             previous.setNext(newElement);
         } else front = newElement;
@@ -213,5 +213,56 @@ public class LinkedList<T> {
      * */
     public boolean search(T value) {
         return index(value) >= 0;
+    }
+    
+    static class Element<T> {
+        private final T value;
+        private Element<T> previous;
+        private Element<T> next;
+
+        public Element(T value, Element<T> previous, Element<T> next) {
+            this.value = value;
+            this.previous = previous;
+            this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public Element<T> getPrevious() {
+            return previous;
+        }
+
+        public void setPrevious(Element<T> value) {
+            previous = value;
+        }
+
+        public Element<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Element<T> value) {
+            next = value;
+        }
+
+        /**
+         * Allows comparison with an inputted value without having to create a new element object
+         */
+        @Override
+        @SuppressWarnings("rawtypes")
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            } else if (obj instanceof Element) {
+                return this.getValue().equals((((Element) obj).getValue()));
+            }
+            return this.getValue().equals(obj);
+        }
     }
 }
