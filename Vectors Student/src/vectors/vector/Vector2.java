@@ -3,7 +3,7 @@ package vectors.vector;
 import vectors.util.MathHelper;
 
 /**
- * A 2D vector specification, with static methods for addition, multiplication, dot product and convex combination.
+ * A 2-vector specification, with static methods for addition, multiplication, dot product and convex combination.
  *
  * @author dw, flowers
  */
