@@ -6,11 +6,11 @@
 package vectors.vector;
 
 /**
- * Implementation of {@link Vector2} using double values.
+ * Simple implementation of {@link AbstractVector2d}.
  *
  * @author dw, flowers
  */
-public class Vector2d extends Vector2 {
+public class Vector2d extends AbstractVector2d {
     private final double x;
     private final double y;
 
