@@ -20,7 +20,7 @@ public class MergeSort {
     @SuppressWarnings("unchecked")
     public static <T extends Comparable<T>> void sort(T[] array) {
         int length = array.length;
-        if (length == 1)
+        if (length <= 1)
             return;
         int half1Length = length / 2;
         int half2Length = length - (length / 2);
@@ -34,9 +34,9 @@ public class MergeSort {
     @SuppressWarnings("unchecked")
     private static<T extends Comparable<T>> T[] merge(T[] array1, T[] array2) {
         T[] sorted = (T[]) Array.newInstance(array1[0].getClass(), array1.length + array2.length);
-        if (!isSorted(array1))
+        if (/*!isSorted(array1)*/array1.length > 1)
             sort(array1);
-        if (!isSorted(array2))
+        if (/*!isSorted(array2)*/array2.length > 1)
             sort(array2);
         int index1 = 0;
         int index2 = 0;
@@ -51,7 +51,8 @@ public class MergeSort {
         return sorted;
     }
 
-    private static<T extends Comparable<T>> boolean isSorted(T[] array) {
+    //TODO abandoned because minor efficiency improvement is outweighed by many more n loops
+    /*private static<T extends Comparable<T>> boolean isSorted(T[] array) {
         T previous = null;
         for (T t : array) {
             if (previous != null && t.compareTo(previous) < 0)
@@ -59,6 +60,6 @@ public class MergeSort {
             previous = t;
         }
         return true;
-    }
+    }*/
 
 }
