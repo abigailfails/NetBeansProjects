@@ -2,6 +2,7 @@ package com.github.abigailfails.mergesort;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Random;
 
 public class MergeSort {
 
@@ -10,6 +11,13 @@ public class MergeSort {
         System.out.println(Arrays.toString(sorted(new Double[]{3.0,-12359.0,-12359.2,89.000001,89.0,23.5,120591036.0,3.141592653,8.0,6.9})));
         System.out.println(Arrays.toString(sorted(new String[]{"Drucilla", "Sherryl", "Huey", "Hannah", "Gerry", "Heidi", "Brendon", "Mckinley", "Pricilla", "Talisha"})));
         System.out.println(Arrays.toString(sorted(new String[]{"we do a little trolling", "we do a little tricking"})));
+        Integer[] weewoo = new Integer[100000000]; //removing2 digits makes it way faster, bad scaling?
+        Random random = new Random();
+        for(int i=0; i< weewoo.length; i++) {
+            weewoo[i] = random.nextInt();
+        }
+        sort(weewoo);
+        System.out.println(Arrays.toString(weewoo));
     }
 
     public static <T extends Comparable<T>> T[] sorted(T[] array) {
