@@ -1,0 +1,119 @@
+Testing sort time for array of 1 elements.
+Start: 2021-05-12T09:15:59.832
+End: 2021-05-12T09:15:59.878
+Execution took 46ms.
+
+Testing sort time for array of 1 elements.
+Start: 2021-05-12T09:16:06.481
+End: 2021-05-12T09:16:06.528
+Execution took 47ms.
+
+Testing sort time for array of 1 elements.
+Start: 2021-05-12T09:16:13.21
+End: 2021-05-12T09:16:13.26
+Execution took 50ms.
+
+Testing sort time for array of 10 elements.
+Start: 2021-05-12T09:16:20.749
+End: 2021-05-12T09:16:20.781
+Execution took 32ms.
+
+Testing sort time for array of 10 elements.
+Start: 2021-05-12T09:16:27.487
+End: 2021-05-12T09:16:27.519
+Execution took 32ms.
+
+Testing sort time for array of 10 elements.
+Start: 2021-05-12T09:16:34.167
+End: 2021-05-12T09:16:34.209
+Execution took 42ms.
+
+Testing sort time for array of 100 elements.
+Start: 2021-05-12T09:17:09.124
+End: 2021-05-12T09:17:09.162
+Execution took 38ms.
+
+Testing sort time for array of 100 elements.
+Start: 2021-05-12T09:17:15.772
+End: 2021-05-12T09:17:15.819
+Execution took 47ms.
+
+Testing sort time for array of 100 elements.
+Start: 2021-05-12T09:17:49.105
+End: 2021-05-12T09:17:49.152
+Execution took 47ms.
+
+Testing sort time for array of 1000 elements.
+Start: 2021-05-12T09:18:09.587
+End: 2021-05-12T09:18:09.634
+Execution took 47ms.
+
+Testing sort time for array of 1000 elements.
+Start: 2021-05-12T09:18:16.322
+End: 2021-05-12T09:18:16.374
+Execution took 52ms.
+
+Testing sort time for array of 1000 elements.
+Start: 2021-05-12T09:18:22.981
+End: 2021-05-12T09:18:23.018
+Execution took 37ms.
+
+Testing sort time for array of 10000 elements.
+Start: 2021-05-12T09:19:07.891
+End: 2021-05-12T09:19:07.928
+Execution took 37ms.
+
+Testing sort time for array of 10000 elements.
+Start: 2021-05-12T09:19:14.612
+End: 2021-05-12T09:19:14.665
+Execution took 53ms.
+
+Testing sort time for array of 10000 elements.
+Start: 2021-05-12T09:19:21.306
+End: 2021-05-12T09:19:21.349
+Execution took 43ms.
+
+Testing sort time for array of 100000 elements.
+Start: 2021-05-12T09:19:49.058
+End: 2021-05-12T09:19:49.142
+Execution took 84ms.
+
+Testing sort time for array of 100000 elements.
+Start: 2021-05-12T09:19:55.91
+End: 2021-05-12T09:19:56.01
+Execution took 100ms.
+
+Testing sort time for array of 100000 elements.
+Start: 2021-05-12T09:20:02.605
+End: 2021-05-12T09:20:02.69
+Execution took 85ms.
+
+Testing sort time for array of 1000000 elements.
+Start: 2021-05-12T09:20:18.986
+End: 2021-05-12T09:20:19.418
+Execution took 432ms.
+
+Testing sort time for array of 1000000 elements.
+Start: 2021-05-12T09:20:25.729
+End: 2021-05-12T09:20:26.13
+Execution took 401ms.
+
+Testing sort time for array of 1000000 elements.
+Start: 2021-05-12T09:20:32.463
+End: 2021-05-12T09:20:32.894
+Execution took 431ms.
+
+Testing sort time for array of 10000000 elements.
+Start: 2021-05-12T09:20:52.815
+End: 2021-05-12T09:20:59.133
+Execution took 6318ms.
+
+Testing sort time for array of 10000000 elements.
+Start: 2021-05-12T09:21:24.624
+End: 2021-05-12T09:21:30.801
+Execution took 6177ms.
+
+Testing sort time for array of 10000000 elements.
+Start: 2021-05-12T09:21:40.116
+End: 2021-05-12T09:21:46.27
+Execution took 6154ms.
