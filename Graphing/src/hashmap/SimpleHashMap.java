@@ -1,13 +1,10 @@
 package hashmap;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * Custom implementation of {@link Map} using a simple hash function of {@code key.hashCode() % size}, permitting null values.
@@ -16,7 +13,7 @@ import java.util.Set;
  * @param <K> the type of key to store
  * @param <V> the type of value to store
  */
-public class SimpleHashMap<K, V> implements Map<K, V> {
+public class SimpleHashMap<K, V> implements Map<K, V>, Cloneable {
     private SimpleHashMap.Entry<K, V>[] entries;
     private final float loadFactor;
     private int count = 0;
@@ -234,6 +231,61 @@ public class SimpleHashMap<K, V> implements Map<K, V> {
         return set;
     }
 
+    @Override
+    public V getOrDefault(Object key, V defaultValue) {
+        return null;
+    }
+
+    @Override
+    public void forEach(BiConsumer<? super K, ? super V> action) {
+
+    }
+
+    @Override
+    public void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
+
+    }
+
+    @Override
+    public V putIfAbsent(K key, V value) {
+        return null;
+    }
+
+    @Override
+    public boolean remove(Object key, Object value) {
+        return false;
+    }
+
+    @Override
+    public boolean replace(K key, V oldValue, V newValue) {
+        return false;
+    }
+
+    @Override
+    public V replace(K key, V value) {
+        return null;
+    }
+
+    @Override
+    public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) {
+        return null;
+    }
+
+    @Override
+    public V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        return null;
+    }
+
+    @Override
+    public V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        return null;
+    }
+
+    @Override
+    public V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
+        return null;
+    }
+
     /**
      * Returns how many key-value pairs are in the map, not including empty spaces in the internal array
      *
@@ -338,9 +390,8 @@ public class SimpleHashMap<K, V> implements Map<K, V> {
         @SuppressWarnings("rawtypes")
         @Override
         public boolean equals(Object o) {
-            if (this == o) {
+            if (this == o)
                 return true;
-            }
             if (o instanceof Entry) {
                 Entry entry = (Entry) o;
                 return this.key.equals(entry.key) && this.value.equals(entry.value);
@@ -362,5 +413,30 @@ public class SimpleHashMap<K, V> implements Map<K, V> {
             code ^= entry == null ? 0 : entry.hashCode();
         }
         return code;
+    }
+
+    @SuppressWarnings("rawtypes")
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o instanceof SimpleHashMap) {
+            SimpleHashMap map = (SimpleHashMap) o;
+            return map.size() == this.size() && this.entrySet().containsAll(map.entrySet());
+        }
+        return false;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    protected SimpleHashMap<K,V> clone() throws CloneNotSupportedException {
+        return (SimpleHashMap<K, V>) super.clone();
+    }
+
+    @Override
+    public String toString() {
+        Set<Map.Entry<K,V>> entries = this.entrySet();
+        if (//entry is comparable//)
+        Collections.sort(entries);
     }
 }
