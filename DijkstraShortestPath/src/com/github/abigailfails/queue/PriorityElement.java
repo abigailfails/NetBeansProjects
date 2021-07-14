@@ -5,11 +5,11 @@ package com.github.abigailfails.queue;
  */
 public class PriorityElement<T> {
     private final T value;
-    private final int priority;
+    private final double priority;
     private PriorityElement<T> previous;
     private PriorityElement<T> next;
 
-    public PriorityElement(T value, int priority, PriorityElement<T> previous, PriorityElement<T> next) {
+    public PriorityElement(T value, double priority, PriorityElement<T> previous, PriorityElement<T> next) {
         this.value = value;
         this.priority = priority;
         this.previous = previous;
@@ -25,7 +25,7 @@ public class PriorityElement<T> {
         return value;
     }
 
-    public int getPriority() {
+    public double getPriority() {
         return priority;
     }
 

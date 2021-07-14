@@ -1,6 +1,11 @@
 package com.github.abigailfails.queue;
 
+import com.github.abigailfails.hashmap.SimpleHashMap;
+
+import java.security.KeyPair;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * A priority queue implemented as a linked queue.
@@ -13,13 +18,27 @@ public class PriorityQueue<T> {
     private PriorityElement<T> front; //The front of the queue, e.g the 1st element
     private int length = 0;
 
+    @SuppressWarnings("unchecked")
+    public Map.Entry<T, Double>[] entries() {
+        ArrayList<Map.Entry<T, Double>> a = new ArrayList<>();
+        PriorityElement<T> e = front;
+
+        while (e != null) {
+            //Iterate through elements adding to the array
+            a.add(new AbstractMap.SimpleEntry<>(e.getValue(), e.getPriority()));
+            e = e.getNext();
+        }
+
+        return (Map.Entry<T, Double>[]) a.toArray(new Object[0]);
+    }
+
     /**
      * Converts the queue into an array of {@code T}.
      *
      * @return the queue as a {@code T[]} array
      * */
     @SuppressWarnings("unchecked")
-    public T[] asArray() {
+    public T[] values() {
         ArrayList<T> a = new ArrayList<>();
         PriorityElement<T> e = front;
         
@@ -84,6 +103,14 @@ public class PriorityQueue<T> {
         throw new IllegalArgumentException("Cannot remove element " + value + " as it does not exist in the queue.");
     }
 
+    public T peekValue() {
+        return front.getValue();
+    }
+
+    public double peekPriority() {
+        return front.getPriority();
+    }
+
     /**
      * Removes the 1st element from the queue and reorganises the queue.
      * 
@@ -110,7 +137,7 @@ public class PriorityQueue<T> {
     }
 
     //If shouldShiftRight is false, adds the new element after elementToShift instead of before
-    private void appendElement(T value, int priority, boolean shouldShiftRight, PriorityElement<T> elementToShift) {
+    private void appendElement(T value, double priority, boolean shouldShiftRight, PriorityElement<T> elementToShift) {
         PriorityElement<T> previous = shouldShiftRight ? elementToShift.getPrevious() : elementToShift;
         PriorityElement<T> next = shouldShiftRight  ? elementToShift : elementToShift.getNext();
         PriorityElement<T> newElement = new PriorityElement<>(value, priority, previous, next);
